@@ -26,7 +26,12 @@ int main(){
         if (escolha == 1)
         {
             produtos();
-            
+            int*quantidade;
+            quantidade = malloc(5*sizeof(int));
+            for (int i=0;i<5;++i){
+                *quantidade = i+1;
+                printf("Quantidade %d:\t",*quantidade);
+            }
         }
 
         else if (escolha == 2){
