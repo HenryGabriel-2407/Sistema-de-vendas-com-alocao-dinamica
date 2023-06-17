@@ -19,20 +19,37 @@ void produtos(){
 }
 int main(){
     int escolha;
+    float opcoes[10] = {5.00, 3.50, 4.90, 8.70, 12.00, 6.00, 10.00, 7.80, 9.90, 2.50};
+    char nome[10][30] = {"Cachorro quente", "Pipoca", "Guarana", "Algodao-Doce", "Hamburguer com Bacon", "Batata-Frita", "Churros", "Vatapa", "Churrasco no espeto", "Mousse de Cupuacu"};
     int a = 0;
     while (a < 1){
         bemvindo();
         scanf("%d", &escolha);
-        if (escolha == 1)
-        {
+        if (escolha == 1){
             produtos();
-            int*quantidade;
-            quantidade = malloc(5*sizeof(int));
+            float*preco = 0;
+            preco = malloc(5*sizeof(float));
+            float*total;
+            total = malloc(5*sizeof(float));
+            float valor_total = 0;
+            int*codigo;
+            codigo = malloc(5*sizeof(int));
+            int*quant;
+            quant = malloc(5*sizeof(int));
             for (int i=0;i<5;++i){
-                *quantidade = i+1;
-                printf("Quantidade %d:\t",*quantidade);
-            }
+                printf("Informe o codigo do item %d:\n", i );
+                scanf("%d",&codigo[i]);
+                printf("Informe a quantidade do %s:\n", nome[codigo[i]] );
+                scanf("%d",&quant[i]);
+                total[i] = opcoes[i]*quant[i];
+                valor_total += total[i];
+                }
+                int b = 0;
+                printf("Desejas adicionar algo no carrinho? [1 - SIM/ 0 - NÃO] : ");
+                scanf("%d", &b);
+                printf("%.2f\n", valor_total);
         }
+        
 
         else if (escolha == 2){
             produtos();
