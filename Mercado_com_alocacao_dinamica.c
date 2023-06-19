@@ -63,8 +63,14 @@ int main(){
                 if (b == 1){
                     printf("--------\n");
                 }
+                printf("---------------------COMANDA---------------------\n");
+                for (int j = 0; j <= a; j++){
+                    if (quantidade[j] > 0){
+                            printf("\t%d - %s - %.2f\n", quantidade[j], nome[codigo], valor[j]);
+                    }
                 }
-            printf("-----------------------------\n");
+                }
+            printf("-------------------------------------------------\n");
             printf("RS %.2f\n", total);
         }
         else if (escolha == 2){
