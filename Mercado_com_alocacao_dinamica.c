@@ -67,9 +67,29 @@ int main(){
                         }
                     }
                 }
-
+                printf("\nQuer alterar a quantidade produto? [1 - SIM / 0 - NAO ]: ");
+                scanf("%d", &b);
+                if (b == 1) {
+                    int nova_quantidade;
+                    printf("Digite o numero do item que deseja alterar: ");
+                    scanf("%d", &codigo);
+                    printf("Digite a nova quantidade: ");
+                    scanf("%d", &nova_quantidade);
+                    for (int i = 0; i <= a; i++)
+                    {
+                        if (quantidade[codigo-1] > 0)
+                        {
+                            total -= valor[codigo-1];
+                            valor[codigo-1] = opcoes[codigo-1] * nova_quantidade;
+                            total += valor[codigo-1];
+                            quantidade = nova_quantidade;
+                        }
+                        
+                    }
+                }
                 
-                printf("---------------------COMANDA---------------------\n");
+                
+                printf("\n---------------------COMANDA---------------------\n");
                 for (int j = 0; j <= a; j++){
                     if (quantidade[j] > 0){
                             printf("%d\t%d - %s - %.2f\n",j+1, quantidade[j], num[j], valor[j]);
@@ -77,7 +97,7 @@ int main(){
                 }
             }
             printf("-------------------------------------------------\n");
-            printf("\t\tRS %.2f\n", total);
+            printf("\t\tRS %.2f\n\n", total);
         }
         else if (escolha == 2){
             produtos();
