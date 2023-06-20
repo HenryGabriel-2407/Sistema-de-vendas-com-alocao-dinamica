@@ -33,6 +33,7 @@ int main(){
             int*quantidade;
             quantidade = malloc(sizeof(int));
             int codigo;
+            codigo = malloc(sizeof(int));
             float*valor;
             valor = malloc(sizeof(float));
             float total = 0;
@@ -46,7 +47,7 @@ int main(){
                 printf("%.2f\n", opcoes[codigo]* quantidade[i]);
                 valor[i] = opcoes[codigo]*quantidade[i];
                 total += valor[i];
-
+                num[i]= nome[codigo];
                 printf("Quer continuar? [1 - SIM / 0 - NAO ]: ");
                 scanf("%d", &b);
                 if (b == 1){
@@ -55,23 +56,28 @@ int main(){
                 }
                 printf("Quer excluir produto? [1 - SIM / 0 - NAO ]: ");
                 scanf("%d", &b);
-                if (b == 1){
-                    printf("--------\n");
+                if (b == 1) {
+                    printf("Digite o numero do item do produto a ser excluido: ");
+                    scanf("%d", &codigo);
+                    for (int i = 0; i <= a; i++) {
+                        if (quantidade[i-1] > 0 && i == codigo) {
+                            total -= valor[i-1];
+                            quantidade[i-1] = 0;
+                            valor[i-1] = 0;
+                        }
+                    }
                 }
-                printf("Quer alterar um produto? [1 - SIM / 0 - NAO ]: ");
-                scanf("%d", &b);
-                if (b == 1){
-                    printf("--------\n");
-                }
+
+                
                 printf("---------------------COMANDA---------------------\n");
                 for (int j = 0; j <= a; j++){
                     if (quantidade[j] > 0){
-                            printf("\t%d - %s - %.2f\n", quantidade[j], nome[codigo], valor[j]);
+                            printf("%d\t%d - %s - %.2f\n",j+1, quantidade[j], num[j], valor[j]);
                     }
                 }
-                }
+            }
             printf("-------------------------------------------------\n");
-            printf("RS %.2f\n", total);
+            printf("\t\tRS %.2f\n", total);
         }
         else if (escolha == 2){
             produtos();
@@ -81,5 +87,5 @@ int main(){
             break;
         }
     
-    }while(escolha != 1 || escolha != 2);
+    }while(escolha == 1 || escolha == 2);
 }
